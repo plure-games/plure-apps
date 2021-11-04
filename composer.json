@@ -1,0 +1,19 @@
+{
+    "name": "plure-games/plure-apps",
+    "description": "Plure applications",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PlureGames\\PlureApps\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artem koval (Plure)",
+            "email": "artem.koval@plure.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
