@@ -9,7 +9,7 @@ class TestMigration extends Migration
     public function up()
     {
         Schema::create(
-            'test',
+            'testw',
             function (Blueprint $table) {
                 $table->bigIncrements('id');
             }
@@ -18,6 +18,6 @@ class TestMigration extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('test');
+        Schema::dropIfExists('testw');
     }
 }
