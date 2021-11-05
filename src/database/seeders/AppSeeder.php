@@ -14,12 +14,13 @@ class AppSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         App::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         App::create(
             [
                 'name' => 'Solitaire',
+                'url' => 'https://solitaire-sprint.plure.com/',
             ]
         );
     }
