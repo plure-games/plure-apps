@@ -15,6 +15,6 @@ class PlureServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->app->make('PlureGames\PlureApps\Controllers\PlureBaseController');
-        $this->app->make('PlureGames\PlureApps\Traits\ExceptionsTrait');
+        $this->app->bind('PlureGames\PlureApps\Traits\ExceptionsTrait');
     }
 }
