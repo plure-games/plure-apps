@@ -16,8 +16,9 @@ class PlureServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->app->make('PlureGames\PlureApps\Controllers\PlureBaseController');
         $this->app->bind('PlureGames\PlureApps\Traits\ExceptionsTrait');
-        $this->app->bind('PlureGames\PlureApps\Models\AppFactory');
-        $this->app->bind('PlureGames\PlureApps\Models\AppSeeder');
+        $this->app->bind('PlureGames\PlureApps\Database\Factories\AppFactory');
+        $this->app->bind('PlureGames\PlureApps\Database\Seeders\AppSeeder');
+        $this->app->bind('PlureGames\PlureApps\Database\Seeders\DatabaseSeeder');
         $this->app->bind('PlureGames\PlureApps\Models\App');
     }
 }
