@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Models\App
+ * PlureGames\PlureApps\Models\App
  *
  * @property int $id
  * @property string $name
@@ -42,6 +42,12 @@ use Illuminate\Database\Eloquent\Model;
 class App extends Model
 {
     use HasFactory;
+
+
+    protected static function newFactory()
+    {
+        return \PlureGames\PlureApps\Database\Factories\AppFactory::new();
+    }
 
     protected $fillable = [
         'name',
