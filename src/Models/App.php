@@ -4,6 +4,7 @@ namespace PlureGames\PlureApps\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PlureGames\PlureApps\Database\Factories\AppFactory;
 
 /**
  * PlureGames\PlureApps\Models\App
@@ -46,7 +47,7 @@ class App extends Model
 
     protected static function newFactory()
     {
-        return \PlureGames\PlureApps\Database\Factories\AppFactory::new();
+        return AppFactory::new();
     }
 
     protected $fillable = [
