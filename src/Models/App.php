@@ -42,6 +42,9 @@ use PlureGames\PlureApps\Database\Factories\AppFactory;
  */
 class App extends Model
 {
+    use HasFactory;
+
+
     protected static function newFactory()
     {
         return AppFactory::new();

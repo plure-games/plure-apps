@@ -7,12 +7,19 @@
     "autoload": {
         "psr-4": {
             "PlureGames\\PlureApps\\": "src/",
-            "Database\\Factories\\":"src/database/factories/"
-        }
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Database\\Factories\\":"src/database/factories/"
+            "PlureGames\\PlureApps\\": "src/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
         }
     },
     "authors": [
@@ -21,6 +28,13 @@
             "email": "artem.koval@plure.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PlureGames\\PlureApps\\PlureServiceProvider"
+            ],
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
