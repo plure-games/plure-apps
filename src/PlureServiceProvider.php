@@ -14,9 +14,9 @@ class PlureServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadFactoriesFrom(__DIR__.'/database/factories');
         $this->app->make('PlureGames\PlureApps\Controllers\PlureBaseController');
         $this->app->bind('PlureGames\PlureApps\Traits\ExceptionsTrait');
-        $this->app->bind('PlureGames\PlureApps\Database\Factories\AppFactory');
         $this->app->bind('PlureGames\PlureApps\Database\Seeders\AppSeeder');
         $this->app->bind('PlureGames\PlureApps\Database\Seeders\DatabaseSeeder');
         $this->app->bind('PlureGames\PlureApps\Models\App');
