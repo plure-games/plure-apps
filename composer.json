@@ -32,7 +32,7 @@
         "laravel": {
             "providers": [
                 "PlureGames\\PlureApps\\PlureServiceProvider"
-            ],
+            ]
         }
     },
     "minimum-stability": "dev",
