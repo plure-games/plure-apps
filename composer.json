@@ -6,7 +6,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "PlureGames\\PlureApps\\": "src/"
+            "PlureGames\\PlureApps\\": "src/",
+            "Database\\Factories\\":"src/database/factories/"
         }
     },
     "authors": [
