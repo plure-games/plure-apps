@@ -18,7 +18,7 @@ class AddUserStartBalanceFieldsToAppsTable extends Migration
             'apps',
             function (Blueprint $table) {
                 $table->unsignedBigInteger('currency_id')->default(
-                    optional(\App\Models\Currency::where('currency', 'diamonds')->first())->id ?? 1
+                    optional(\DB::table('currencies')->where('currency', 'diamonds')->first())->id ?? 1
                 );
                 $table->bigInteger('currency_amount')->default(200000000);
             }
