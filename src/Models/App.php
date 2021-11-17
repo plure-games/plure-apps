@@ -2,7 +2,7 @@
 
 namespace PlureGames\PlureApps\Models;
 
-use App\Casts\Micros;
+use App\Services\Micros;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Currency;
