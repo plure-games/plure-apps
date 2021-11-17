@@ -13,11 +13,13 @@ class AddUserStartBalanceFieldsToAppsTable extends Migration
      */
     public function up()
     {
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::table('apps', function (Blueprint $table) {
-            $table->unsignedBigInteger('currency_id');
+            $table->unsignedBigInteger('currency_id')->default(\App\Models\Currency::first()->id);
             $table->foreign('currency_id')->references('id')->on('currencies');
             $table->bigInteger('currency_amount');
         });
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 
     /**
@@ -27,9 +29,11 @@ class AddUserStartBalanceFieldsToAppsTable extends Migration
      */
     public function down()
     {
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::table('apps', function (Blueprint $table) {
             $table->dropColumn('currency_id');
             $table->dropColumn('currency_amount');
         });
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
