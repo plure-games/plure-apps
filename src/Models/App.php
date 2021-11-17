@@ -4,6 +4,8 @@ namespace PlureGames\PlureApps\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Currency;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use PlureGames\PlureApps\Database\Factories\AppFactory;
 
 /**
@@ -57,5 +59,10 @@ class App extends Model
     public function getUrl(): string
     {
         return rtrim($this->url, '/');
+    }
+
+    public function balanceCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'fee_type');
     }
 }
