@@ -31,6 +31,7 @@ class AddUserStartBalanceFieldsToAppsTable extends Migration
     {
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Schema::table('apps', function (Blueprint $table) {
+            $table->dropForeign('apps_currency_id_foreign');
             $table->dropColumn('currency_id');
             $table->dropColumn('currency_amount');
         });
