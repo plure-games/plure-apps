@@ -63,6 +63,6 @@ class App extends Model
 
     public function balanceCurrency(): BelongsTo
     {
-        return $this->belongsTo(Currency::class, 'fee_type');
+        return $this->belongsTo(Currency::class, 'currency_id');
     }
 }
