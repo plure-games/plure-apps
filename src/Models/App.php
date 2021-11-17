@@ -2,7 +2,6 @@
 
 namespace PlureGames\PlureApps\Models;
 
-use App\Services\Micros;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Currency;
@@ -48,10 +47,6 @@ use PlureGames\PlureApps\Database\Factories\AppFactory;
 class App extends Model
 {
     use HasFactory;
-
-    protected $casts = [
-        'currency_amount' => Micros::class,
-    ];
 
     protected static function newFactory()
     {
