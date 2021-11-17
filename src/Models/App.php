@@ -39,6 +39,8 @@ use PlureGames\PlureApps\Database\Factories\AppFactory;
  *     @OA\Property(property="id",title="ID",description="Tournament ID",example="1",type="integer"),
  *     @OA\Property(property="name",title="Name",description="Name of the app",example="Application",type="string"),
  *     @OA\Property(property="url",title="URL",description="URL of the app",example="https://solitaire.com",type="string"),
+ *     @OA\Property(property="currency_id",title="Currency ID",description="ID of start balance currency",example="2",type="integer"),
+ *     @OA\Property(property="currency_amount",title="Currency amount",description="Amount of start balance currency",example="2",type="integer"),
  * )
  * Class Cases
  * @package Incase\Models
