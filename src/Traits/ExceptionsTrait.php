@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 
 trait ExceptionsTrait
 {
-    public function handleApiException($request, \Exception|\Error $exception): \Illuminate\Http\JsonResponse
+    public function handleApiException($request, \Exception|\Error $exception): \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
     {
         $exception = $this->prepareException($exception);
 
@@ -18,6 +18,10 @@ trait ExceptionsTrait
 
         if ($exception instanceof \Illuminate\Validation\ValidationException) {
             $exception = $this->convertValidationExceptionToResponse($exception, $request);
+        }
+
+        if ($exception instanceof \Illuminate\Http\RedirectResponse) {
+            return $exception;
         }
 
         return $this->customApiResponse($exception);
