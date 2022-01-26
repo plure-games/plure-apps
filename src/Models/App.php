@@ -23,10 +23,11 @@ use PlureGames\PlureApps\Database\Factories\AppFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|App whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|App whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|App whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|App whereUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|App whereShowPWAAfterGameX($value)
  * @mixin \Eloquent
  * @mixin IdeHelperApp
  * @method static \Database\Factories\AppFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|App whereUrl($value)
  */
 
 /**
@@ -65,5 +66,10 @@ class App extends Model
     public function balanceCurrency(): BelongsTo
     {
         return $this->belongsTo(Currency::class, 'currency_id');
+    }
+
+    public function rewardCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'pwa_reward_currency_id');
     }
 }
