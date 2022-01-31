@@ -54,6 +54,10 @@ class App extends Model
         return AppFactory::new();
     }
 
+    protected $casts = [
+        'opponents' => 'array'
+    ];
+
     protected $fillable = [
         'name',
     ];
