@@ -41,6 +41,8 @@ use PlureGames\PlureApps\Database\Factories\AppFactory;
  *     @OA\Property(property="url",title="URL",description="URL of the app",example="https://solitaire.com",type="string"),
  *     @OA\Property(property="currency_id",title="Currency ID",description="ID of start balance currency",example="2",type="integer"),
  *     @OA\Property(property="currency_amount",title="Currency amount",description="Amount of start balance currency",example="2",type="integer"),
+ *     @OA\Property(property="tutorial_currency_id",title="Tutorial Currency ID",description="ID of tutorial reward currency",example="2",type="integer"),
+ *     @OA\Property(property="tutorial_currency_amount",title="Tutorial Currency amount",description="Amount of tutorial reward currency",example="2",type="integer"),
  * )
  * Class Cases
  * @package Incase\Models
@@ -75,5 +77,10 @@ class App extends Model
     public function rewardCurrency(): BelongsTo
     {
         return $this->belongsTo(Currency::class, 'pwa_reward_currency_id');
+    }
+
+    public function tutorialCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'tutorial_currency_id');
     }
 }
