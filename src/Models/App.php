@@ -83,4 +83,9 @@ class App extends Model
     {
         return $this->belongsTo(Currency::class, 'tutorial_currency_id');
     }
+
+    public function registrationCurrency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class, 'registration_currency_id');
+    }
 }
