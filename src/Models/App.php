@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Currency;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use PlureGames\PlureApps\Database\Factories\AppFactory;
 
 /**
@@ -62,30 +63,21 @@ class App extends Model
 
     protected $fillable = [
         'name',
+        'url'
     ];
+
+    public function settings(): HasMany
+    {
+        return $this->hasMany(AppSetting::class);
+    }
 
     public function getUrl(): string
     {
         return rtrim($this->url, '/');
     }
 
-    public function balanceCurrency(): BelongsTo
+    public function getSetting($setting)
     {
-        return $this->belongsTo(Currency::class, 'currency_id');
-    }
-
-    public function rewardCurrency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class, 'pwa_reward_currency_id');
-    }
-
-    public function tutorialCurrency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class, 'tutorial_currency_id');
-    }
-
-    public function registrationCurrency(): BelongsTo
-    {
-        return $this->belongsTo(Currency::class, 'registration_currency_id');
+        return $this->settings->where('key', $setting)->first()?->value;
     }
 }
