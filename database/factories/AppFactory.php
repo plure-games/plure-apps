@@ -20,6 +20,8 @@ class AppFactory extends Factory
             'show_pwa_after_game_x' => 1,
             'updated_at' => Carbon::now(),
             'created_at' => Carbon::now(),
+            'registration_currency_id' => 2,
+            'registration_currency_amount' => 200000000,
         ];
     }
 }
