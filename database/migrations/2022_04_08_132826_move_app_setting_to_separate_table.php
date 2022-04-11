@@ -27,10 +27,7 @@ class MoveAppSettingToSeparateTable extends Migration
             ]);
             $table->char('value', 255);
             $table->char('description', 255)->nullable();
-            $table->enum('group', [
-                'tutorial',
-                'pwa_install'
-            ])->nullable();
+            $table->char('group', 255)->nullable();
 
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->useCurrent();
