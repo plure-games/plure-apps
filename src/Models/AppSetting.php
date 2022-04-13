@@ -45,6 +45,7 @@ class AppSetting extends Model
     }
 
     protected $fillable = [
+        'app_id',
         'key',
         'value_type',
         'value',
