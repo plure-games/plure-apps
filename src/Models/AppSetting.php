@@ -59,7 +59,7 @@ class AppSetting extends Model
             get: function($value){
                 return match($this->value_type){
                     'array' => json_decode($value),
-                    'string' => (string)$value,
+                    'string', 'currency' => (string)$value,
                     'integer' => (int)$value,
                     'bool' => (bool)$value,
                 };
@@ -67,7 +67,7 @@ class AppSetting extends Model
             set: function($value){
                 return match($this->value_type){
                     'array' => json_encode($value),
-                    'string' => (string)$value,
+                    'string', 'currency' => (string)$value,
                     'integer' => (int)$value,
                     'bool' => (bool)$value,
                 };
