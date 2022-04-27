@@ -16,6 +16,7 @@ use PlureGames\PlureApps\Database\Factories\AppSettingFactory;
  * @property string|null $value
  * @property string|null $description
  * @property string|null $group
+ * @property string|null $send_to_fe
  * @property \Illuminate\Support\Carbon $updated_at
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $deleted_at
@@ -24,6 +25,7 @@ use PlureGames\PlureApps\Database\Factories\AppSettingFactory;
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting query()
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereSendToFe($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereValue($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AppSetting whereValueType($value)
@@ -51,6 +53,7 @@ class AppSetting extends Model
         'value',
         'description',
         'group',
+        'send_to_fe',
     ];
 
     protected function value(): Attribute

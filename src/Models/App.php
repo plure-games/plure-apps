@@ -71,6 +71,11 @@ class App extends Model
         return $this->hasMany(AppSetting::class);
     }
 
+    public function FESettings(): HasMany
+    {
+        return $this->hasMany(AppSetting::class)->whereSendToFe(true);
+    }
+
     public function getUrl(): string
     {
         return rtrim($this->url, '/');
