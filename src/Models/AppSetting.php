@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use PlureGames\PlureApps\Database\Factories\AppSettingFactory;
+use PlureGames\PlureApps\Scopes\AppIDScope;
 
 /**
  * PlureGames\PlureApps\Models\AppSetting
@@ -55,6 +56,17 @@ class AppSetting extends Model
         'group',
         'send_to_fe',
     ];
+
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope(new AppIDScope());
+    }
 
     protected function value(): Attribute
     {
