@@ -5,6 +5,7 @@ namespace PlureGames\PlureApps\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use PlureGames\PlureApps\Database\Factories\UserSessionFactory;
 
 /**
  * App\Models\UserSession
@@ -74,4 +75,9 @@ class UserSession extends Model
         'ended_at',
         'last_event_at',
     ];
+
+    protected static function newFactory()
+    {
+        return UserSessionFactory::new();
+    }
 }
