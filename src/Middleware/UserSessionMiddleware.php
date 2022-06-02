@@ -35,7 +35,6 @@ class UserSessionMiddleware
             'user_agent' => $request->userAgent(),
             'ip' => IP::get(),
             'country' => Geo::code(IP::get()),
-            'state' => Geo::stateCode(IP::get()),
             'bot' => $this->crawlerDetect->isCrawler(),
         ];
 
