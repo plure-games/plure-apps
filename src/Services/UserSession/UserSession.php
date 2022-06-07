@@ -79,6 +79,7 @@ class UserSession
             'device_info' => $params['device_info'] ?? null,
             'ip' => $params['ip'] ?? null,
             'country' => $params['country'] ?? null,
+            'state' => $params['state'] ?? null,
             'bot' => $params['bot'] ?? false,
         ]);
     }
