@@ -65,7 +65,6 @@ class UserSession extends Model
         'device_info',
         'ip',
         'country',
-        'state',
         'bot',
     ];
 
