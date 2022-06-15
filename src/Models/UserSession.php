@@ -2,6 +2,7 @@
 
 namespace PlureGames\PlureApps\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
@@ -63,6 +64,7 @@ class UserSession extends Model
         'referral',
         'user_agent',
         'device_info',
+        'device_cap',
         'ip',
         'country',
         'state',
@@ -75,6 +77,11 @@ class UserSession extends Model
         'started_at',
         'ended_at',
         'last_event_at',
+    ];
+
+    protected $casts = [
+        'device_info' => AsArrayObject::class,
+        'device_cap' => AsArrayObject::class,
     ];
 
     protected static function newFactory()
