@@ -25,8 +25,6 @@ class UserSessionMiddleware
         Closure     $next,
     )
     {
-        /** @var JsonResponse $response */
-        $response = $next($request);
 
         /** @var TempUser $tempUser */
         $tempUser = auth()->user();
@@ -40,6 +38,9 @@ class UserSessionMiddleware
         ];
 
         $this->userSession->ping($tempUser, $params);
+
+        /** @var JsonResponse $response */
+        $response = $next($request);
 
         return $response;
     }
