@@ -25,8 +25,6 @@ class UserSessionMiddleware
         Closure     $next,
     )
     {
-        /** @var JsonResponse $response */
-        $response = $next($request);
 
         /** @var TempUser $tempUser */
         $tempUser = auth()->user();
@@ -35,10 +33,14 @@ class UserSessionMiddleware
             'user_agent' => $request->userAgent(),
             'ip' => IP::get(),
             'country' => Geo::code(IP::get()),
+            'state' => Geo::stateCode(IP::get()),
             'bot' => $this->crawlerDetect->isCrawler(),
         ];
 
         $this->userSession->ping($tempUser, $params);
+
+        /** @var JsonResponse $response */
+        $response = $next($request);
 
         return $response;
     }
