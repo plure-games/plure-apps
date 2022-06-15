@@ -77,6 +77,7 @@ class UserSession
             'referral' => $params['referral'] ?? null,
             'user_agent' => $params['user_agent'] ?? null,
             'device_info' => $params['device_info'] ?? null,
+            'device_cap' => $params['device_cap'] ?? null,
             'ip' => $params['ip'] ?? null,
             'country' => $params['country'] ?? null,
             'bot' => $params['bot'] ?? false,
