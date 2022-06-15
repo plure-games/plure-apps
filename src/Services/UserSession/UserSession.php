@@ -80,6 +80,7 @@ class UserSession
             'device_cap' => $params['device_cap'] ?? null,
             'ip' => $params['ip'] ?? null,
             'country' => $params['country'] ?? null,
+            'state' => $params['state'] ?? null,
             'bot' => $params['bot'] ?? false,
         ]);
     }
