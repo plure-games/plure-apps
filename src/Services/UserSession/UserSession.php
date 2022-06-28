@@ -34,11 +34,17 @@ class UserSession
             return;
         }
 
-        if (!$firstSession &&
+        $countryChanged =
             ($params['country'] ?? null) &&
-            ($params['country'] ?? null) !== 'ZZ' &&
-            $params['country'] !== $tempUser->country
-        ) {
+            $params['country'] !== 'ZZ' &&
+            $params['country'] !== $lastSession->country;
+
+        $usStateChanged =
+            ($params['country'] ?? null) &&
+            $params['country'] === 'US' &&
+            ($params['state'] !== $lastSession->state || $lastSession->country !== 'US');
+
+        if (!$firstSession && ($countryChanged || $usStateChanged)) {
             $lastSession->close_reason = self::CLOSE_REASON_COUNTRY_CHANGE;
             $lastSession->ended_at = $this->now;
             $lastSession->save();
