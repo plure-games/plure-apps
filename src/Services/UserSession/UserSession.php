@@ -92,7 +92,7 @@ class UserSession
             'bot' => $params['bot'] ?? false,
         ]);
 
-        if (($params['ip'] ?? null) && $params['ip'] !== $lastSession?->ip) {
+        if (!$session->bot && $session->ip !== $lastSession?->ip) {
             event(new IpChangedEvent($params['ip'], $session));
         }
 
