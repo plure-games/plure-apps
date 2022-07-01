@@ -59,8 +59,8 @@ class UserSession
             $lastSession->close_reason = self::CLOSE_REASON_TIMEOUT;
             $lastSession->ended_at = $this->now;
             $this->createNewSession($tempUser, $params, $lastSession);
-        } elseif ($lastSession && !empty($params['bot']) && !empty($params['ip'])) {
-            if (!$params['bot'] && $params['ip'] !== $lastSession->ip) {
+        } elseif ($lastSession && !empty($params['ip'])) {
+            if (!($params['bot'] ?? false) && $params['ip'] !== $lastSession->ip) {
                 event(new IpChangedEvent($params['ip'], $lastSession));
             }
         }
