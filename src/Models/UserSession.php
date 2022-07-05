@@ -2,6 +2,7 @@
 
 namespace PlureGames\PlureApps\Models;
 
+use App\Models\TempUser;
 use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -43,11 +44,13 @@ use PlureGames\PlureApps\Database\Factories\UserSessionFactory;
  * @mixin \Eloquent
  * @property Carbon $last_event_at
  * @property int $is_first_session
+ * @property bool $is_vpn
  * @property string|null $close_reason
  * @method static \Illuminate\Database\Eloquent\Builder|UserSession whereCloseReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserSession whereIsFirstSession($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserSession whereLastEventAt($value)
  * @method static \Database\Factories\UserSessionFactory factory(...$parameters)
+ * @property-read \App\Models\TempUser|null $user
  */
 class UserSession extends Model
 {
@@ -87,5 +90,10 @@ class UserSession extends Model
     protected static function newFactory()
     {
         return UserSessionFactory::new();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(TempUser::class, 'temp_user_id', 'temp_user_id');
     }
 }
