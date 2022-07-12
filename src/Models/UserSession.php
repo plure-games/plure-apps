@@ -72,6 +72,7 @@ class UserSession extends Model
         'country',
         'state',
         'bot',
+        'is_vpn',
     ];
 
     protected $dates = [

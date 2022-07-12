@@ -77,6 +77,14 @@ class UserSession
         ?Session  $lastSession,
     ): Session
     {
+        $bot = $params['bot'] ?? false;
+        $ip = $params['ip'] ?? null;
+        $ipChanged = false;
+
+        if (!$bot && $ip !== $lastSession?->ip) {
+            $ipChanged = true;
+        }
+
         $session = Session::create([
             'app_id' => $tempUser->app_id,
             'temp_user_id' => $tempUser->temp_user_id,
@@ -90,14 +98,15 @@ class UserSession
             'user_agent' => $params['user_agent'] ?? null,
             'device_info' => $params['device_info'] ?? null,
             'device_cap' => $params['device_cap'] ?? null,
-            'ip' => $params['ip'] ?? null,
+            'ip' => $ip,
             'country' => $params['country'] ?? null,
             'state' => $params['state'] ?? null,
-            'bot' => $params['bot'] ?? false,
+            'bot' => $bot,
+            'is_vpn' => $ipChanged ? $lastSession?->is_vpn : 0,
         ]);
 
-        if (!$session->bot && $session->ip !== $lastSession?->ip) {
-            event(new IpChangedEvent($params['ip'], $session));
+        if ($ipChanged) {
+            event(new IpChangedEvent($ip, $session));
         }
 
         return $session;
