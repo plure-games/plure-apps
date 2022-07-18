@@ -5,9 +5,7 @@ namespace PlureGames\PlureApps\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Session;
-use PlureGames\PlureApps\Models\App;
+use Illuminate\Support\Facades\Schema;
 
 class RealUserScope implements Scope
 {
@@ -20,6 +18,8 @@ class RealUserScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('fake_user', false);
+        if(Schema::hasColumn('temp_users', 'fake_user')) {
+            $builder->where('fake_user', false);
+        }
     }
 }
